@@ -1,0 +1,109 @@
+<html>
+	<head>
+		<title>jQuery: List Filter for Multiple Categories</title>	
+		<style type="text/css">
+			body
+			{
+				font-family: Arial;
+				font-size: 1em;
+				color: #000;
+			}
+			ul
+			{
+				width: 10em;
+				list-style-type: none;
+			}
+			li
+			{
+				padding: 0.5em;
+			}
+			.blue
+			{
+				background-color: #99f
+			}
+			.red
+			{
+				background-color: #f99
+			}
+			.yellow
+			{
+				background-color: #ff9
+			}
+			
+		</style>
+		<script type="text/javascript" src="jquery-1.3.1.min.js"></script>
+		<script type="text/javascript">		
+			$(document).ready(function()
+			{				
+				$("#btnFilter").click(function()
+				{
+					var fruitColor	= $("#fruitColor").val();
+					var fruitType	= $("#fruitType").val();
+					
+					var fruitColorSelector = '';
+					var fruitTypeSelector = '';					
+
+					if (fruitColor == "all" && fruitType == "all")
+					{
+						//show all items
+						$(".item").show();
+					}
+					else
+					{
+						if (fruitType != "all")
+						{
+							fruitTypeSelector = '.' + fruitType
+						}
+						
+						if (fruitColor != "all")
+						{
+							fruitColorSelector = '.' + fruitColor
+						}
+					
+						$(".item").hide();
+						$(fruitTypeSelector + fruitColorSelector).show();
+					}
+					
+				});
+				
+			});
+		</script>
+	</head>
+	<body>
+		<a href="http://jetlogs.org/2009/04/03/filtering-lists-with-multiple-categories-using-jquery/">&laquo; Code Explanation</a> | <a href="jquery_list_filter_multiple.zip">Download Source</a>
+		<p>&nbsp;</p>
+		Select Color Category: 
+		<select name="selFruitColor" id="fruitColor">
+			<option value="all">Any Color</option>
+			<option value="red">Red</option>
+			<option value="blue">Blue</option>
+			<option value="yellow">Yellow</option>
+		</select>
+		<br>
+		Select Fruit Type: 
+		<select name="selFruitType" id="fruitType">
+			<option value="all">Any Type</option>
+			<option value="fruit">Fruit</option>
+			<option value="berry">Berry</option>
+		</select>
+		<br>
+		<input type="button" id="btnFilter" value="Filter the list">
+		
+		<select name="selFruitType1" id="fruitType1">
+			<option class="item red fruit">Apple</option>
+			<option class="item blue fruit">Grape</option>
+			<option class="item yellow fruit">Lemon</option>
+			<option class="item red fruit">Cherry</option>
+			<option class="item yellow fruit">Banana</option>
+			<option class="item red berry">Strawberry</option>
+			<option class="item blue berry">Blueberry</option>
+			<option class="item red berry">Raspberry</option>
+			<option class="item yellow fruit">Pineapple</option>
+			<option class="item yellow berry">Yellowberry</option>
+		</select>
+		
+		
+		
+		<p>In this example, we used two criteria for filtering our list. Fruits can be sorted by their color and their fruit type.</p>
+	</body>
+</html>
